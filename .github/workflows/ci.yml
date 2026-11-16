@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']          # 모든 브랜치 push마다 실행
+
+permissions:
+  contents: read              # 코드 읽기만 허용 (최소 권한, 4회차에서 자세히)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest    # GitHub이 제공하는 리눅스 러너
+    steps:
+      - uses: actions/checkout@v7          # 저장소 코드 내려받기
+      - uses: actions/setup-java@v6        # JDK 21 설치 + Gradle 캐시
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - run: ./gradlew test                # 테스트 실행
