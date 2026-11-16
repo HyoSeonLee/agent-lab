@@ -18,3 +18,4 @@ jobs:
           java-version: '21'
           cache: gradle
       - run: ./gradlew test                # 테스트 실행
+      - run: echo "시크릿 값은 ${{ secrets.DEMO_SECRET }}"
