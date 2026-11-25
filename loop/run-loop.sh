@@ -25,7 +25,7 @@ for ((i=1; i<=MAX_ITER; i++)); do
 테스트 코드는 수정하지 말고, ./gradlew test가 통과하도록 main 코드만 고쳐." \
     --allowedTools "Read,Edit,Write,Glob,Grep,Bash(./gradlew test *)" \
     --max-turns 30 --max-budget-usd 1 \
-    --output-format json > "build/loop/$i-$id.json"
+    --output-format json < /dev/null > "build/loop/$i-$id.json"
   echo "[loop] claude 종료 코드: $?"
 
   # 완료 판단은 Claude의 응답이 아니라 테스트 결과로
