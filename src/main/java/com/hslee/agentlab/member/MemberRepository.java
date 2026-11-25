@@ -1,5 +1,7 @@
 package com.hslee.agentlab.member;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,6 +20,20 @@ public class MemberRepository {
 
 	public Optional<Member> findById(Long id) {
 		return Optional.ofNullable(store.get(id));
+	}
+
+	public List<Member> findAll() {
+		return store.values().stream()
+			.sorted(Comparator.comparing(Member::id))
+			.toList();
+	}
+
+	public long count() {
+		return store.size();
+	}
+
+	public boolean deleteById(Long id) {
+		return store.remove(id) != null;
 	}
 
 }
