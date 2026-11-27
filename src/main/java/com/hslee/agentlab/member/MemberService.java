@@ -26,6 +26,10 @@ public class MemberService {
 		return memberRepository.count();
 	}
 
+	public Member register(String name, String email) {
+		return memberRepository.save(new Member(null, name, email));
+	}
+
 	public void deleteMember(Long id) {
 		if (!memberRepository.deleteById(id)) {
 			throw new MemberNotFoundException(id);
