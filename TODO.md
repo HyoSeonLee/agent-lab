@@ -4,4 +4,4 @@
 - [x] 03-member-delete: DELETE /api/members/{id} 로 회원을 삭제한다. 성공 204, 없으면 MemberNotFoundException으로 404 (MemberService.deleteMember(id))
 - [x] 05-member-register: POST /api/members 로 회원을 등록한다. 요청 본문 {"name","email"}, 성공 201과 등록된 회원 반환 (MemberService.register(String name, String email))
 - [x] 06-member-search: GET /api/members/search?email=... 로 이메일 검색. 있으면 200과 회원, 없으면 404 MEMBER_NOT_FOUND (MemberService.findByEmail(String email)이 Optional<Member> 반환)
-- [ ] 07-member-rename: PATCH /api/members/{id}/name 로 이름 변경. 요청 본문 {"name"}, 성공 200과 변경된 회원, 없으면 MemberNotFoundException으로 404 (MemberService.rename(Long id, String name))
+- [x] 07-member-rename: PATCH /api/members/{id}/name 로 이름 변경. 요청 본문 {"name"}, 성공 200과 변경된 회원, 없으면 MemberNotFoundException으로 404 (MemberService.rename(Long id, String name))

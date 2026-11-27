@@ -35,6 +35,11 @@ public class MemberService {
 		return memberRepository.save(new Member(null, name, email));
 	}
 
+	public Member rename(Long id, String name) {
+		Member member = getMember(id);
+		return memberRepository.save(new Member(member.id(), name, member.email()));
+	}
+
 	public void deleteMember(Long id) {
 		if (!memberRepository.deleteById(id)) {
 			throw new MemberNotFoundException(id);
