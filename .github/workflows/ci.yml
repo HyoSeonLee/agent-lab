@@ -18,3 +18,8 @@ jobs:
           java-version: '21'
           cache: gradle
       - run: ./gradlew test                # 테스트 실행
+      - uses: actions/upload-artifact@v7   # 테스트 리포트 저장
+        if: always()                       # 테스트가 실패해도 저장
+        with:
+          name: test-report
+          path: build/reports/tests/test/
