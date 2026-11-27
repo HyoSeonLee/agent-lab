@@ -1,6 +1,7 @@
 package com.hslee.agentlab.member;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,25 @@ public class MemberService {
 			.orElseThrow(() -> new MemberNotFoundException(id));
 	}
 
+	public Optional<Member> findByEmail(String email) {
+		return memberRepository.findByEmail(email);
+	}
+
 	public List<Member> getMembers() {
 		return memberRepository.findAll();
 	}
 
 	public long countMembers() {
 		return memberRepository.count();
+	}
+
+	public Member register(String name, String email) {
+		return memberRepository.save(new Member(null, name, email));
+	}
+
+	public Member rename(Long id, String name) {
+		Member member = getMember(id);
+		return memberRepository.save(new Member(member.id(), name, member.email()));
 	}
 
 	public void deleteMember(Long id) {
