@@ -28,6 +28,12 @@ public class MemberRepository {
 		return Optional.ofNullable(store.get(id));
 	}
 
+	public Optional<Member> findByEmail(String email) {
+		return store.values().stream()
+			.filter(member -> member.email().equals(email))
+			.findFirst();
+	}
+
 	public List<Member> findAll() {
 		return store.values().stream()
 			.sorted(Comparator.comparing(Member::id))
